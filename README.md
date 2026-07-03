@@ -1,129 +1,66 @@
-# Genesis Physics Lab 🔬⚡
+<div align="center">
 
-A rich, dark-themed web UI for interacting with the [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) physics simulation engine — built for robotics researchers, game developers, and anyone interested in real-time physics simulation.
+# 🔬 Genesis Physics Lab
 
-**Works in full live mode with Genesis installed, or in demo mode without it.**
+**Interactive web UI for the Genesis physics simulation engine — no Genesis install required**
 
-![Genesis Physics Lab UI](https://raw.githubusercontent.com/RhythrosaLabs/genesis-physics-lab/main/preview.png)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
+
+</div>
 
 ---
 
-## Features
+A rich, dark-themed web UI for [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) — the physics simulation engine. Runs in full live mode with Genesis installed, or in demo mode without it. Perfect for robotics researchers, game developers, and anyone exploring real-time physics.
+
+## ✨ Features
 
 | Feature | Description |
 |---|---|
-| 🎬 **Scene Presets** | One-click load of curated scenes: Falling Tower, Billiards, Zero-G Sandbox, Avalanche |
-| 📦 **Object Builder** | Add Box, Sphere, Cylinder, or Capsule with full param control |
-| 🎲 **Quick Drop** | Randomised single-object drop or full tower stacks |
-| ⚛ **Physics Controls** | Live gravity presets (Earth, Moon, Mars, Zero-G, Reversed) + per-axis control |
-| 📋 **Python Export** | One-click export of the current scene as a runnable Genesis `.py` script |
-| 📊 **Live Stats** | Real-time FPS, step counter, entity list, backend info |
-| 🗒 **Activity Log** | Per-action timestamped log with clear button |
-| 🌐 **Demo Mode** | Runs fully without Genesis installed — great for rapid prototyping |
-| 🌙 **Dark Theme** | Polished dark UI inspired by GitHub and VS Code |
+| **Scene Presets** | One-click load: Falling Tower, Billiards, Zero-G Sandbox, Avalanche |
+| **Object Builder** | Add Box, Sphere, Cylinder, Capsule with full parameter control |
+| **Quick Drop** | Randomized single-object drop or full tower stacks |
+| **Physics Controls** | Live gravity presets — Earth, Moon, Mars, Zero-G, Reversed + per-axis control |
+| **Python Export** | One-click export of the current scene as a runnable Genesis `.py` script |
+| **Live Stats** | Real-time FPS, step counter, entity list, backend info |
+| **Activity Log** | Per-action timestamped log |
+| **Demo Mode** | Fully functional without Genesis installed |
+| **Dark Theme** | GitHub/VS Code-inspired dark UI |
 
----
+## 🚀 Quick Start
 
-## Quick Start
-
-### Option 1 — Demo mode (no Genesis required)
-
+**Demo mode (no Genesis needed):**
 ```bash
-git clone https://github.com/RhythrosaLabs/genesis-physics-lab
+git clone https://github.com/RhythrosaLabs/genesis-physics-lab.git
 cd genesis-physics-lab
 pip install -r requirements.txt
 python app.py
+# Open http://localhost:8080
 ```
 
-Open **http://localhost:8080** in your browser. The UI runs in `DEMO MODE` badge — all controls work and the exported Python script is valid Genesis code.
+**Live mode (with Genesis):** Install [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) first, then run as above. The badge switches from `DEMO` to `LIVE`.
 
-### Option 2 — Live mode (with Genesis)
+## 🛠️ Tech Stack
 
-Install Genesis following the [official instructions](https://github.com/Genesis-Embodied-AI/Genesis), then:
+- **Python + Flask** — web server and Genesis integration
+- **JavaScript** — browser UI, real-time controls
+- **Genesis** — physics simulation engine (optional)
 
-```bash
-pip install -r requirements.txt
-python app.py
-```
+## 🤝 Contributing
 
-The badge switches to `LIVE` and the viewer window opens alongside the browser UI.
+PRs welcome. Open an issue first for major changes.
 
----
+## 📄 License
 
-## Usage Guide
+MIT
 
-### Creating a Scene
-Click **▶ New Scene** in the top bar. Optionally pick a **Scene Preset** from the left sidebar first.
+## 💛 Support
 
-### Adding Objects
-1. Go to the **🔧 Build** tab
-2. Choose object type, set dimensions and position
-3. Click **+ Add to Scene**
+If this project helps your research or game dev, consider supporting:
 
-Or use **Quick Drop** buttons for instant randomised drops.
-
-### Changing Physics
-Go to the **⚛ Physics** tab. Hit a planet button or type custom X/Y/Z gravity values.
-
-### Exporting
-Click **📄 Export** tab (or **⬇ Export .py** in the top bar) to generate, copy, or download a complete standalone Python script.
+👉 [Donate via PayPal](https://paypal.me/noodlebake) — @noodlebake
 
 ---
-
-## API Reference
-
-The Flask backend exposes a REST API you can call from any client:
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/scene/create` | Create a new scene |
-| POST | `/api/scene/reset` | Reset scene state |
-| POST | `/api/scene/pause` | Toggle pause/resume |
-| POST | `/api/scene/step` | Advance one step (when paused) |
-| GET  | `/api/scene/status` | Live stats JSON |
-| POST | `/api/scene/gravity` | Update gravity vector `{"gravity":[x,y,z]}` |
-| GET  | `/api/presets` | List available presets |
-| POST | `/api/presets/<id>` | Load a preset by ID |
-| GET  | `/api/entities` | List all entities in the scene |
-| POST | `/api/entities` | Add an entity `{"type":"box","params":{...}}` |
-| DELETE | `/api/entities/<id>` | Remove an entity by ID |
-| GET  | `/api/export/python` | Get current scene as Python script |
-| GET  | `/api/log` | Recent activity log entries |
-| POST | `/api/log/clear` | Clear the log |
-
----
-
-## Scene Presets
-
-| Preset | Description |
-|---|---|
-| `sandbox` | Empty ground plane — build anything |
-| `falling_tower` | Stack of boxes + wrecking ball sphere |
-| `billiards` | Sphere rack on a near-flat surface |
-| `zero_gravity` | Mixed rigid bodies in zero-G |
-| `avalanche` | 8 random rocks falling from height |
-
----
-
-## Tech Stack
-
-- **Backend**: Python · Flask · Flask-CORS
-- **Physics Engine**: [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) (optional)
-- **Frontend**: Vanilla JS, CSS Custom Properties — zero dependencies
-
----
-
-## License
-
-MIT — do whatever you want with this. Attribution appreciated.
-
----
-
-## Credits
-
-Built on top of the [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) physics engine by Genesis-Embodied-AI.
-
-
-## Support
-
-If you find this useful, consider supporting via [PayPal](https://paypal.me/noodlebake)
+<div align="center">Made with ❤️ by <a href="https://github.com/RhythrosaLabs">RhythrosaLabs</a></div>
