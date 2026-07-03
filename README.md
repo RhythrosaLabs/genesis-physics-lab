@@ -122,3 +122,8 @@ MIT — do whatever you want with this. Attribution appreciated.
 ## Credits
 
 Built on top of the [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) physics engine by Genesis-Embodied-AI.
+
+
+## Support
+
+If you find this useful, consider supporting via [PayPal](https://paypal.me/noodlebake)
